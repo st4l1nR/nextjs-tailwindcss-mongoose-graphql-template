@@ -12,6 +12,16 @@ yarn dev
 pnpm dev
 ```
 
+Second, add enviroment variables
+
+```bash
+NEXT_PUBLIC_API = 'http://localhost:3000/api/graphql';
+MONGO_URI = 'YOUR MONGODB URI';
+AWS_S3_ACCESS_KEY_ID = 'YOUR S3 BUCKET ID';
+AWS_S3_BUCKET_NAME = 'YOUR S3 BUCKET NAME';
+AWS_S3_SECRET_ACCESS_KEY = 'YOUR S3 BUCKET ACCESS KEY';
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
