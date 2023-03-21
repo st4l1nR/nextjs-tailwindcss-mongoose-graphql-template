@@ -1,9 +1,8 @@
-// @ts-ignore
 import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
 import { authorQueries, authorMutations } from './author';
 import { imageMutations } from './image';
 
-export default {
+const resolvers = {
   Upload: GraphQLUpload,
   Query: {
     ...authorQueries,
@@ -13,3 +12,4 @@ export default {
     ...imageMutations,
   },
 };
+export default resolvers;

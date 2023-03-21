@@ -18,7 +18,7 @@ export default gql`
 
   extend type Query {
     listAuthor: [Author]!
-    getAuthorById(_id:ID!): Author!
+    getAuthorById(_id: ID!): Author!
   }
 
   extend type Mutation {

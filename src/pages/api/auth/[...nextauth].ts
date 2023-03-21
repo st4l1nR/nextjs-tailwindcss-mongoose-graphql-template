@@ -3,7 +3,6 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import FacebookProvider from 'next-auth/providers/facebook';
 
-
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
@@ -15,7 +14,7 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
         return {
-          id:""
+          id: '',
         };
       },
     }),

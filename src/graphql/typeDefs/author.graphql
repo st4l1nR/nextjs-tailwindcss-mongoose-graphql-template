@@ -1,7 +1,7 @@
 query ListAuthor {
-    listAuthor {
-        name
-    }
+  listAuthor {
+    name
+  }
 }
 
 query GetAuthorById($id: ID!) {

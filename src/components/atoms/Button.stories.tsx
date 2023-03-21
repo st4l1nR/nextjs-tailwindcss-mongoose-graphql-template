@@ -1,18 +1,18 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Button, { props } from './Button';
+import Button from './Button';
+import { type Story, type Meta } from '@storybook/react';
+import type { props } from './Button';
 
-export default {
+const story: Meta = {
   title: 'Atoms/Button',
   component: Button,
-} as Meta;
+};
 
 const Template: Story<props> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
   variant: 'primary',
-
 };
 
 export const Secondary = Template.bind({});
@@ -46,3 +46,5 @@ Large.args = {
   size: 'lg',
   rounded: false,
 };
+
+export default story;

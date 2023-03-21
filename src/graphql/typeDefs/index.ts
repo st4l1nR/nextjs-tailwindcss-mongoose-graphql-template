@@ -12,4 +12,5 @@ const link = gql`
   }
 `;
 
-export default [link, author, image];
+const typeDefs = [link, author, image];
+export default typeDefs;

@@ -1,5 +1,6 @@
-import author from "./author";
+import Author from './author';
 
-export default {
-  author,
+const models = {
+  Author,
 };
+export default models;

@@ -13,7 +13,7 @@ export const imageMutations = {
       .upload({
         Bucket: process.env.AWS_S3_BUCKET_NAME as string,
         Body: stream,
-        Key: uuid() + path.extname(filename),
+        Key: String(uuid()) + path.extname(filename),
       })
       .promise();
 
@@ -24,13 +24,13 @@ export const imageMutations = {
   multipleUpload: async (parent: any, { files }: any, { user }: any) => {
     const uploadedImages = await Promise.all(
       files.map(async (file: any) => {
-        const { createReadStream, filename} = await file;
+        const { createReadStream, filename } = await file;
         const stream = createReadStream();
         const uploadedImage = await s3
           .upload({
             Bucket: process.env.AWS_S3_BUCKET_NAME as string,
             Body: stream,
-            Key: uuid() + path.extname(filename),
+            Key: String(uuid()) + path.extname(filename),
           })
           .promise();
         return uploadedImage.Location;

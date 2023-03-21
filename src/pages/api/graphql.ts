@@ -9,24 +9,29 @@ import jwt from 'jsonwebtoken';
 
 const cors = Cors();
 
-connectDb();
+connectDb()
+  .then()
+  .catch((error) => {
+    console.log(error);
+  });
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    const authorization = req.headers.authorization || '';
-      const token = authorization.split(' ')[1];
-      let user = null;
-      if (token) {
-        try {
-          user = jwt.verify(token, process.env.SECRET as string);
-        } catch (error) {
-          user = null;
-        }
+    const authorization = req.headers.authorization ?? '';
+    const token: string = authorization.split(' ')[1];
+    let user;
+    if (token !== null && token !== undefined) {
+      try {
+        user = jwt.verify(token, process.env.SECRET as string);
+      } catch (error) {
+        user = null;
       }
+    }
     return {
       models,
-      user
+      user,
     };
   },
 });
@@ -39,12 +44,15 @@ export const config = {
 const startServer = server.start();
 
 export default cors(async function handler(req, res) {
-  if (req.method == 'OPTIONS') {
+  if (req.method === 'OPTIONS') {
     res.end();
     return false;
   }
   const contentType = req.headers['content-type'];
-  if (contentType && contentType.startsWith('multipart/form-data')) {
+  if (
+    typeof contentType === 'string' ??
+    contentType.startsWith('multipart/form-data')
+  ) {
     req.filePayload = await processRequest(req, res);
   }
   await startServer;

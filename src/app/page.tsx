@@ -1,16 +1,17 @@
-"use client";
-import { useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+'use client';
+import { useState } from 'react';
+import { Dialog } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: 'Product', href: '#' },
+  { name: 'Features', href: '#' },
+  { name: 'Marketplace', href: '#' },
+  { name: 'Company', href: '#' },
 ];
 
-const index = () => {
+const Home = (): JSX.Element => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -46,18 +47,16 @@ const index = () => {
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
-                className="h-8"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+              <Image src="/images/logo.png" width={30} height={30} alt="logo" />
             </a>
           </div>
           <div className="flex lg:hidden">
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => {
+                setMobileMenuOpen(true);
+              }}
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon className="w-6 h-6" aria-hidden="true" />
@@ -88,16 +87,19 @@ const index = () => {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <img
-                  className="h-8"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
+                <Image
+                  src="/images/logo.png"
+                  width={30}
+                  height={30}
+                  alt="logo"
                 />
               </a>
               <button
                 type="button"
                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                }}
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon className="w-6 h-6" aria-hidden="true" />
@@ -134,7 +136,7 @@ const index = () => {
           <div className="max-w-2xl py-32 mx-auto sm:py-48 lg:py-56">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative px-3 py-1 text-sm leading-6 text-gray-600 rounded-full ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                Announcing our next round of funding.{" "}
+                Announcing our next round of funding.{' '}
                 <a href="#" className="font-semibold text-indigo-600">
                   <span className="absolute inset-0" aria-hidden="true" />
                   Read more <span aria-hidden="true">&rarr;</span>
@@ -198,4 +200,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Home;
